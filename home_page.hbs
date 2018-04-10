@@ -1,0 +1,141 @@
+<script>
+  var _templateName = "homepage";
+</script>
+
+<div class="homepage-wrapper">
+
+  <section class="section hero"></section>
+
+  <div class="container">
+    <section class="section knowledge-base">
+      <section class="categories blocks">
+        <ul class="blocks-list category-list">
+          {{#each categories}}
+          <li class="blocks-item category">
+            <a href="{{url}}" class="blocks-item-link" title="{{name}}" id="{{id}}">
+              <span class="cat-icon"></span>
+              <h2 class="blocks-item-title">{{name}}</h2>
+            </a>
+            <ul class="section-title-list">
+              {{#each sections}}
+              <li>
+                <a href="{{url}}" title="{{name}}">
+                  {{name}}
+                </a>
+              </li>
+              {{/each}}
+            </ul>
+            {{#if more_sections}}
+              <a href="{{url}}" class="button see-all" title="see all sections">
+                {{t 'see_all_sections'}}
+              </a>
+            {{/if}}
+          </li>
+          {{/each}}
+        </ul>
+      </section>
+    </section>
+  </div>
+
+  <section class="full-knowledge-base collapse-block">
+    <a href="javascript:void(0)" class="collapse-block__heading">
+      <span class="collapse-block__state-open">
+        Show more categories
+        <i class="fa fa-angle-right"></i>
+      </span>
+      <span class="collapse-block__state-close">
+        Show less categories
+        <i class="fa fa-angle-down"></i>
+      </span>
+    </a>
+    <div class="collapse-block__content collapse">
+      <ul class="categories-list list">
+        {{#each categories}}
+        <li class="list__item">
+          <a class="list__item-link" href="{{url}}" title="{{name}}">
+            {{name}}
+          </a>
+        </li>
+        {{/each}}
+        {{pagination}}
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    if ( $('.blocks-item').length > 5 ) {
+      $('.full-knowledge-base').show();
+    }
+  </script>
+
+  {{#is settings.product_block_visibility 'on'}}
+  <div class="device-support-bg">
+    <div class="container">
+      <h1>{{settings.product_block_title}}</h1>
+      <ul class="device-list">
+        <li>
+          <!-- Need to replace '#' (HASH) in href="#" with the URL of your page (Website/Help Center redirection URL) -->
+          <a href="{{settings.first_block_url}}" title="{{settings.first_block_title}}">
+            <img src="{{settings.first_block_icon}}" alt="{{settings.first_block_title}} image" />
+            <h4>{{settings.first_block_title}}</h4>
+          </a>
+        </li>
+        <li>
+          <!-- Need to replace '#' (HASH) in href="#" with the URL of your page (Website/Help Center redirection URL) -->
+          <a href="{{settings.second_block_url}}" title="{{settings.second_block_title}}">
+            <img src="{{settings.second_block_icon}}" alt="{{settings.second_block_title}} image" />
+            <h4>{{settings.second_block_title}}</h4>
+          </a>
+        </li>
+        <li>
+          <!-- Need to replace '#' (HASH) in href="#" with the URL of your page (Website/Help Center redirection URL) -->
+          <a href="{{settings.third_block_url}}" title="{{settings.third_block_title}}">
+            <img src="{{settings.third_block_icon}}" alt="{{settings.third_block_title}} image" />
+            <h4>{{settings.third_block_title}}</h4>
+          </a>
+        </li>
+        <li>
+          <!-- Need to replace '#' (HASH) in href="#" with the URL of your page (Website/Help Center redirection URL) -->
+          <a href="{{settings.fourth_block_url}}" title="{{settings.fourth_block_title}}">
+            <img src="{{settings.fourth_block_icon}}" alt="{{settings.fourth_block_title}} image" />
+            <h4>{{settings.fourth_block_title}}</h4>
+          </a>
+        </li>
+        <li>
+          <!-- Need to replace '#' (HASH) in href="#" with the URL of your page (Website/Help Center redirection URL) -->
+          <a href="{{settings.fifth_block_url}}" title="{{settings.fifth_block_title}}">
+            <img src="{{settings.fifth_block_icon}}" alt="{{settings.fifth_block_title}} image" />
+            <h4>{{settings.fifth_block_title}}</h4>
+          </a>
+        </li>
+        <li>
+          <!-- Need to replace '#' (HASH) in href="#" with the URL of your page (Website/Help Center redirection URL) -->
+          <a href="{{settings.sixth_block_url}}" title="{{settings.sixth_block_title}}">
+            <img src="{{settings.sixth_block_icon}}" alt="{{settings.sixth_block_title}} image" />
+            <h4>{{settings.sixth_block_title}}</h4>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  {{/is}}
+
+  <div class="container other-topics">
+    {{#if promoted_articles}}
+    <section class="promoted-articles">
+      <h1>Other Topics</h1>
+      <ul class="article-list promoted-articles">
+        {{#each promoted_articles}}
+        <li class="promoted-articles-item">
+          <a href="{{url}}" title="{{title}}">
+            <img src="{{asset 'promoted-article-icon.png'}}" alt="promoted article icon"/>
+            <span>{{title}}</span>
+          </a>
+        </li>
+        {{/each}}
+      </ul>
+    </section>
+    {{/if}}
+  </div>
+
+</div>

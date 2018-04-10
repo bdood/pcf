@@ -1,0 +1,61 @@
+<script>
+  var _templateName = "sections";
+</script>
+
+<div class="breadcrumb-bg">
+  <div class="container">
+    <!-- Zendesk's component to show breadcrumbs -->
+    {{breadcrumbs}}
+  </div>
+  <script>
+    var catID = $('.breadcrumbs li:nth-child(2) a')
+                        .attr('href').match(/[0-9]+/)[0]
+  </script>
+</div>
+
+<div class="section-template-wrapper">
+  <div class="container">
+    <!-- Zendesk's component to show the Section's Title -->
+    <h1 class="title section-title">
+      {{#if section.internal}}
+      <span class="visibility-internal" data-title="{{t 'internal'}}">
+        <span class="visibility-internal-icon"></span>
+      </span>
+      {{/if}}
+      {{section.name}}
+    </h1>
+
+    <!-- Zendesk's component to show the Category's Description entered, when creating a category by Zendesk's Help Center Admin -->
+    <p class="section-description">{{section.description}}</p>
+
+    <section class="section-content-wrapper content-wrapper">
+      <div class="sidebar collapsible-sidebar category-sidebar">
+        <h3 class="collapsible-sidebar-title sidenav-title menu-title">
+          Menu
+        </h3>
+        <div class="overview-details">
+          <ul class="hc-category-list"></ul>
+        </div>
+      </div>
+      <div class="section-content content-area section">
+        {{#if section.articles}}
+        <ul class="article-list">
+          {{#each section.articles}}
+          <li {{#if promoted}} class="article-promoted" {{/if}}>
+            {{#if promoted}}
+            <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+            {{/if}}
+            <a href="{{url}}">{{title}}</a>
+          </li>
+          {{/each}}
+        </ul>
+        {{else}}
+        <i class="section-empty">
+          <a href="{{section.url}}">{{t 'empty'}}</a>
+        </i>
+        {{/if}}
+        {{pagination}}
+      </div>
+    </section>
+  </div>
+</div>

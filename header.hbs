@@ -1,0 +1,46 @@
+<header class="header">
+  <div class="container header-container">
+    <div class="logo">
+      {{#link 'help_center'}}
+        <img src="{{logo_url}}" alt="{{t 'logo'}}">
+      {{/link}}
+    </div>
+    <div class="nav-wrapper">
+      <span class="icon-menu"></span>
+      {{user_info}}
+    </div>
+  </div>
+
+  <div class="nav-wrapper nav-links">
+    <div class="container">
+      <nav class="user-nav" id="user-nav">
+        <a href="{{settings.first_link_url}}" title="{{settings.first_link_text}}">
+          {{settings.first_link_text}}
+        </a>
+        <a href="{{settings.second_link_url}}" title="{{settings.second_link_text}}">
+          {{settings.second_link_text}}
+        </a>
+        <a href="{{settings.third_link_url}}" title="{{settings.third_link_text}}">
+          {{settings.third_link_text}}
+        </a>
+        <a href="{{settings.fourth_link_url}}" title="{{settings.fourth_link_text}}">
+          {{settings.fourth_link_text}}
+        </a>
+        <a href="{{settings.fifth_link_url}}" title="{{settings.fifth_link_text}}">
+          {{settings.fifth_link_text}}
+        </a>
+        {{link 'community'}}
+        {{link 'new_request' class='submit-a-request'}}
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="search-bg">
+    <!-- Zendesk's search Component in use -->
+    <div class="search-bar">
+      {{search instant=true}}
+    </div>
+  </div>
+</div>
